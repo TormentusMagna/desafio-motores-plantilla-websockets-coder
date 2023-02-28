@@ -1,0 +1,11 @@
+<%- include('./partials/header') %>
+<% if (products.length > 0) { %>
+  <h1>Bienvenido a la tienda estos son los productos que tenemos disponibles:</h1>
+<% products.forEach(e => { %>
+  <h2><%= e.title %></h2>
+  <img src="<%= e.thumbnails[0] %>" alt="<%= e.title %>" />
+<% }) %>
+<% } else { %> 
+  <h1>NO HAY PRODUCTOS</h1>
+<% }%>
+<%- include('./partials/footer') %>
