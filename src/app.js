@@ -47,7 +47,12 @@ io.on('connection', async (socket) => {
 
   socket.emit('server:initialProducts', listaProductosDB);
 
-  socket.on('client:newproduct', async (data) => {
+  socket.on('client:idProductoaBorrar', (data) => {
+    listaProductosDB = listaProductosDB.filter((p) => p.id !== parseInt(data));
+    socket.emit('server:productoBorrado', listaProductosDB);
+  });
+
+  socket.on('client:newproduct', (data) => {
     const productID = listaProductosDB.length + 1;
     const newProduct = { id: productID, ...data };
     listaProductosDB.push(newProduct);
